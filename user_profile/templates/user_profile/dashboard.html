@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{%block pageinlinecss%}
+td {
+    max-width: 200px; /* veya ihtiyacınıza göre başka bir değer */
+    word-wrap: break-word;
+}
+
+{%endblock%}
+
+{%block content%}
+<div class="row mt-5">
+    <div class="col-sm-12 text-center">
+        <h1>
+            {{profile.user.username}} Dashboard
+        </h1>
+    </div>
+    <div class="col-sm-12 text-center">
+        <p>
+            Here in this section, you can see all the urls that you have created with their view data.
+        </p>
+    </div>
+    {%if urls%}
+    <div class="col-sm-12 mt-3">
+        <table class="table table-striped border border-light">
+            <thead>
+                <tr>
+                    <th>Base URL</th>
+                    <th>Shortened URL</th>
+                    <th>View Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for url in urls%}
+                <tr>
+                    <td><a href="{{url.base_url}}" target="_blank">{{url.base_url}}</a></td>
+                    <td><a href="{{url.get_absolute_url}}" target="_blank">{{url.shortened_slug}}</a></td>
+                    <td>{{url.view_count}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    {%endif%}
+</div>
+{%endblock%}

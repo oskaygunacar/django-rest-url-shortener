@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <h1 class="mt-5">{{page_title}}</h1>
+        <form class="mt-3 border border-light rounded-4 p-5" action="" method="POST">
+            {%csrf_token%}
+            {{form|crispy}}
+            <div class="col-sm-12">
+            {%if url%} <a class="link-dark text-dark mt-3" href="{{url.get_absolute_url}}" target="_blank">{{url.get_absolute_url}}</a>{%endif%}
+            </div>
+            <div class="col-sm-12 mt-3">
+                <button class="btn btn-primary" type="submit">Create Shortened URL</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

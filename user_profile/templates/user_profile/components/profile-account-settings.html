@@ -1,0 +1,37 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        <a class="nav-link" href="{%url 'user_profile:dashboard_view'%}">
+            Dashboard
+        </a>
+    </li>
+    {% if profile.premium%}
+    <li class="list-group-item">
+        <a class="nav-link" href="{%url 'shortener:premium_url_shortener'%}">
+            <iconify-icon icon="ic:twotone-workspace-premium" width="23" height="23"></iconify-icon> Create Special Short Link
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="" id="apiToken">
+            <iconify-icon icon="ic:twotone-workspace-premium" width="23" height="23"></iconify-icon> Get API Token
+        </a>
+    </li>
+    <div class="" id="TokenDiv">
+    </div>
+    {%endif%}
+    <li class="list-group-item">
+        <a class="nav-link" href="{%url 'user_profile:profile_update_view'%}">
+            Change Profile Info
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="{%url 'account:change_password'%}">
+            Change Password
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a class="nav-link" href="{%url 'account:delete_account_view'%}">
+            Delete Account
+        </a>
+    </li>
+
+  </ul>

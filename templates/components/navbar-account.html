@@ -1,0 +1,20 @@
+{% load thumbnail %}
+<ul class="navbar-nav ms-auto me-5">
+    <li class="nav-item dropdown">
+        <a href="#" class="dropdown-item" role="button" data-bs-toggle="dropdown">
+            {%if request.user.is_authenticated%}<img src="{{request.user.profile.avatar|thumbnail_url:'micro-avatar'}}" class="rounded-circle img-thumbnail" alt=""> {{request.user.username}}
+            {%else%}
+            Account
+            {%endif%}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+            {% if request.user.is_authenticated %}
+            <li><a class="dropdown-item" href="{{request.user.profile.get_absolute_url}}">Profile</a></li>
+            <li><a class="dropdown-item" href="{%url 'account:logout'%}">Logout</a></li>
+            {%else%}
+            <li><a class="dropdown-item" href="{%url 'account:login_view'%}">Login</a></li>
+            <li><a class="dropdown-item" href="{%url 'account:signup_view'%}">Create an Account</a></li>
+            {%endif%}
+        </ul>
+      </li>
+</ul>
